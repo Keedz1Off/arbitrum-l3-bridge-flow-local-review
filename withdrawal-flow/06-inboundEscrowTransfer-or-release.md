@@ -1,0 +1,67 @@
+﻿# Function Review: inboundEscrowTransfer(...) / release(...)
+
+## Function Code
+
+```solidity
+function inboundEscrowTransfer(
+    address _l1Token,
+    address _dest,
+    uint256 _amount
+) internal virtual {
+    // this method is virtual since different subclasses can handle escrow differently
+    IERC20(_l1Token).safeTransfer(_dest, _amount);
+}
+```
+
+---
+
+## Function Explanation
+
+`inboundEscrowTransfer(...)` / `release(...)` is the final token release step in the withdrawal flow.
+
+After the withdrawal message is verified on parent L2, this function releases escrowed tokens to the L1 recipient.
+
+Main idea:
+
+```text
+The final L1 release must match the verified L2 burn.
+```
+
+This is where bridge accounting becomes an actual parent-chain token balance change.
+
+---
+
+## Important Logic Notes
+
+### Authorized Caller
+
+Release logic should only be callable by the trusted gateway/finalizer.
+
+If unauthorized callers can trigger release, escrowed funds may be drained.
+
+---
+
+### Amount Used for Release
+
+The released amount should come from verified withdrawal finalization data.
+
+It should not be independently controlled by a user at this stage.
+
+---
+
+### Recipient
+
+The recipient must match the L1 recipient encoded in the authenticated withdrawal message.
+
+If the recipient can be changed here, funds can be redirected.
+
+---
+
+### Token Transfer Behavior
+
+This step transfers real parent-chain tokens from escrow.
+
+If the token behaves unexpectedly, the release may fail or create inconsistent accounting.
+
+---
+

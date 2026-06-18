@@ -1,0 +1,73 @@
+﻿# Function Review: createOutboundTx(...)
+
+## Function Code
+
+```solidity
+function createOutboundTx(
+    address _from,
+    uint256, /* _tokenAmount */
+    bytes memory _outboundCalldata
+) internal virtual returns (uint256) {
+    // We make this function virtual since outboundTransfer logic is the same for many gateways
+    // but sometimes (ie weth) you construct the outgoing message differently.
+
+    // exitNum incremented after being included in _outboundCalldata
+    exitNum++;
+    return
+        sendTxToL1(
+            // default to sending no callvalue to the L1
+            0,
+            _from,
+            counterpartGateway,
+            _outboundCalldata
+        );
+}
+```
+
+---
+
+## Function Explanation
+
+`createOutboundTx(...)` creates the L3 -> L3 message for withdrawal finalization.
+
+This function sends the prepared withdrawal calldata toward L1.
+
+Main idea:
+
+```text
+The outbound message must carry the verified withdrawal data to the correct parent-chain gateway.
+```
+
+---
+
+## Important Logic Notes
+
+### L1 Target
+
+The outbound transaction must target the correct parent-chain gateway or finalization contract.
+
+Wrong target can make the withdrawal fail or execute unintended logic.
+
+---
+
+### Calldata Passed to L1
+
+The calldata should contain the verified withdrawal values:
+
+- token
+- recipient
+- amount
+- finalize selector
+
+If calldata is wrong, L1 may release the wrong asset, amount, or recipient.
+
+---
+
+### Message Identity
+
+The withdrawal message should be uniquely identifiable by the bridge system.
+
+This matters for replay protection and finalization tracking.
+
+---
+
