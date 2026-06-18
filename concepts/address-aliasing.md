@@ -12,3 +12,4 @@ It is a security transformation applied to the msg.sender when a Smart Contract 
 
 ## Graphic example
 <img width="1158" height="440" alt="image" src="https://github.com/user-attachments/assets/5df1ad4c-7876-43b7-9055-110c3e6e789d" />
+
