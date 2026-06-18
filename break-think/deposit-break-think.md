@@ -18,15 +18,6 @@ CONSEQUENCES
 
 ```
 
-## getOutboundCalldata(...)
-
-```text
-INVARIANT
-
-CONSEQUENCES
-
-```
-
 ## createRetryableTicket(...)
 
 ```text
@@ -46,15 +37,6 @@ CONSEQUENCES
 ```
 
 ## finalizeInboundTransfer(...)
-
-```text
-INVARIANT
-
-CONSEQUENCES
-
-```
-
-## inboundEscrowTransfer(...) / mint(...)
 
 ```text
 INVARIANT

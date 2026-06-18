@@ -9,25 +9,7 @@ CONSEQUENCES
 
 ```
 
-## burn(...) / lock(...)
-
-```text
-INVARIANT
-
-CONSEQUENCES
-
-```
-
-## getOutboundCalldata(...)
-
-```text
-INVARIANT
-
-CONSEQUENCES
-
-```
-
-## createOutboundTx(...)
+## burn(...)
 
 ```text
 INVARIANT
@@ -37,15 +19,6 @@ CONSEQUENCES
 ```
 
 ## finalizeInboundTransfer(...) / finalizeWithdrawal(...)
-
-```text
-INVARIANT
-
-CONSEQUENCES
-
-```
-
-## inboundEscrowTransfer(...) / release(...)
 
 ```text
 INVARIANT

@@ -1,12 +1,41 @@
-﻿# Break Think
+﻿# Break Think Analysis
 
-This folder is left for manual Break Think notes later.
+This folder is for manual Break Think analysis.
 
-For now, this repository only documents architecture and function behavior.
-
-## Files
+Break Think means:
 
 ```text
-deposit-break-think.md
-withdrawal-break-think.md
+Invariant -> Consequence
 ```
+
+## Main Deposit Functions
+
+```text
+outboundTransfer(...)
+outboundEscrowTransfer(...)
+createRetryableTicket(...)
+AbsInbox._createRetryableTicket(...)
+finalizeInboundTransfer(...)
+```
+
+## Main Withdrawal Functions
+
+```text
+outboundTransfer(...) / withdraw(...)
+burn(...)
+finalizeInboundTransfer(...) / finalizeWithdrawal(...)
+```
+
+## Format
+
+```text
+Function:
+
+Invariant:
+
+Consequences:
+```
+
+## Important
+
+Here are the most important functions for L3 Break Think.
