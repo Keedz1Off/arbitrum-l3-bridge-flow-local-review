@@ -1,17 +1,14 @@
-﻿# Address Aliasing In L2 -> L3 Messages
 
-Address aliasing means that when a contract sends a message from the parent chain to the child chain, the child chain may see an aliased version of the sender address.
+# What is Address Aliasing?
 
-For L3 context:
+It is a security transformation applied to the msg.sender when a Smart Contract sends a message from Layer 1 (Ethereum) to Layer 2 (like Arbitrum or Optimism).
 
-```text
-L2 contract sender -> aliased sender on L3
-```
+## Graphic example
+<img width="703" height="403" alt="image" src="https://github.com/user-attachments/assets/9d760fd2-01ae-497b-8587-127e7be533e9" />
 
-Simple meaning:
+# What actually happens without aliasing?????
 
-```text
-The address seen on L3 may not be the raw L2 contract address.
-```
+## The function receives an L1 address, but on L2 this address may be another smart contract. This can lead to calling the wrong contract.
 
-This matters when a gateway checks who sent the cross-chain message.
+## Graphic example
+<img width="1158" height="440" alt="image" src="https://github.com/user-attachments/assets/5df1ad4c-7876-43b7-9055-110c3e6e789d" />
