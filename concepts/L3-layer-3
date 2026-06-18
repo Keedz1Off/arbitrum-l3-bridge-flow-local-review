@@ -1,29 +1,4 @@
-﻿# L3 Parent / Child Context
+# What is L3 (Layer 3
+Its an L2 fork (Arbitrum Nitro ) which is deployed on an L2.
 
-In an Arbitrum L3 setup, the parent chain is usually an L2, and the child chain is the L3.
-
-```text
-parent chain = L2
-child chain  = L3
-```
-
-This changes the meaning of the same bridge functions.
-
-```text
-L2 bridge: L1 <-> L2
-L3 bridge: L2 <-> L3
-```
-
-## Deposit Context
-
-```text
-source chain = L2
-destination chain = L3
-```
-
-## Withdrawal Context
-
-```text
-source chain = L3
-destination chain = L2
-```
+no info yet
